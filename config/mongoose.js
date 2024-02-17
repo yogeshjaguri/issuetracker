@@ -6,9 +6,7 @@ require("dotenv").config();
 const mongodbUrl = process.env.MONGODB_URL;
 
 // connect to the database
-mongoose.connect(mongodbUrl, {
-  useNewUrlParser: true,
-});
+mongoose.connect(mongodbUrl);
 
 // acquire the connection (to check if it's successful)
 const db = mongoose.connection;

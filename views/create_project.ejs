@@ -1,0 +1,28 @@
+
+<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+
+<form action="/project/create" method="POST" class="needs-validation m-5" novalidate>
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Enter project name" required>
+        <div class="invalid-feedback">
+            Please provide a valid project name.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="author">Author:</label>
+        <input type="text" class="form-control" id="author" name="author" placeholder="Enter author name" required>
+        <div class="invalid-feedback">
+            Please provide a valid author name.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter project description" required></textarea>
+        <div class="invalid-feedback">
+            Please provide a valid project description.
+        </div>
+    </div>
+    
+    <button type="submit" class="btn btn-success">Create Project</button>
+</form>

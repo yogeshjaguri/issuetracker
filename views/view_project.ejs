@@ -1,0 +1,76 @@
+
+
+<link rel="stylesheet" href="../assets/css/projectView.css">
+
+`
+<div class="container scrollable">
+    <div class="d-flex justify-content-between align-items-center">
+        <div>
+            <h2 class="project-name mb-3">
+                <%= project.name %>
+            </h2>
+           
+        </div>
+        <div>
+            <p class="project-info mb-2"><strong>Description:</strong> <%= project.description %></p>
+            <p class="project-info mb-2"><strong>Author:</strong> <%= project.author %></p>
+        </div>
+    </div>
+    <hr class="mb-0" style="width: 100%; border-top: 1px solid rgba(0, 0, 0, 0.1);">
+    
+    
+    
+
+    <h3 class=" d-flex justify-content-center">Issues:</h3>
+
+    <form action="/projects/<%= project._id %>/filter" method="GET" class="d-flex justify-content-between my-4">
+        <div class="form-group">
+            <label for="label-filter">Filter by Label:</label>
+            <select name="label" id="label-filter" class="form-control">
+                <option value="all">All Labels</option>
+                <% labels.forEach(function(label) { %>
+                    <option value="<%= label %>">
+                        <%= label %>
+                    </option>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="search">Search:</label>
+            <input type="text" name="search" id="search" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-primary "style="height: 40px;">Apply Filters</button>
+    </form>
+
+    <% if (project.issues.length === 0) { %>
+        <h4>No Issues Found</h4>
+    <% } else { %>
+        <ul class="list-group issue-list">
+            <% project.issues.forEach(function(issue) { %>
+                <li class="list-group-item issue-item">
+                    <strong class="issue-title">
+                        Title: <%= issue.title %>
+                    </strong>
+                    <br>
+                    <strong class="issue-author">
+                        By: <%= issue.author %>
+                    </strong>
+                    <p class="issue-description">
+                        Description: <%= issue.description %>
+                    </p>
+                    <p class="issue-description">
+                        Labels: <%= issue.labels %>
+                    </p>
+                </li>
+            <% }); %>
+        </ul>
+    <% } %>
+
+    <div class="button-group d-flex justify-content-between align-items-center my-4">
+        <form action="/projects/<%= project._id %>/delete" method="POST" class="delete-form">
+            <button type="submit" class="btn btn-danger">Delete Project</button>
+        </form>
+        <a href="/projects/<%= project._id %>/issues/new" class="btn btn-success">Create Issue</a>
+        
+    </div>
+</div>

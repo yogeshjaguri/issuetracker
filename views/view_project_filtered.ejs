@@ -1,0 +1,17 @@
+
+
+        <% if (filteredIssues.length === 0) { %>
+            <h4>No Filtered Issues Found</h4>
+        <% } else { %>
+            <ul class="list-group">
+                <% filteredIssues.forEach(function(issue) { %>
+                    <li class="list-group-item">
+                        <h5 class="mb-1">Title: <%= issue.title %></h5>
+                        <p class="mb-1">By: <%= issue.author %></p>
+                        <p class="mb-1">Description: <%= issue.description %></p>
+                        <p class="mb-1">Labels: <%= issue.labels %></p>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
+        
